@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import Word from './Word';
+import MyInput from './MyInput';
 
 export default class Buoi1 extends Component {
     render() {
@@ -8,6 +9,7 @@ export default class Buoi1 extends Component {
             <View style={styles.container}>
                 <Text style={styles.title}>Buoi1 Component</Text>
                 <Word />
+                <MyInput />
             </View>
         );
     }
