@@ -13,6 +13,7 @@ export default class MyInput extends Component {
                     placeholder="Enter your email"
                     style={styles.textInput}
                     value={this.state.txtEmail}
+                    underlineColorAndroid="transparent"
                     onChangeText={text => this.setState({ txtEmail: text })}
                 />
                 <Text>{ JSON.stringify(this.state) }</Text>
