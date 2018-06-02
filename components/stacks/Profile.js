@@ -3,12 +3,16 @@ import { View, Text, TouchableOpacity } from 'react-native';
 
 export default class Profile extends Component {
     render() {
+        const { goBack } = this.props.navigation;
         return (
             <View style={styles.container}>
                 <Text style={styles.title}>
                     Profile Component
                 </Text>
-                <TouchableOpacity style={styles.buttonContainer}>
+                <TouchableOpacity
+                    style={styles.buttonContainer}
+                    onPress={() => goBack()}
+                >
                     <Text style={styles.buttonText}>Log out</Text>
                 </TouchableOpacity>
             </View>

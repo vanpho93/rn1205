@@ -3,12 +3,16 @@ import { View, Text, TouchableOpacity } from 'react-native';
 
 export default class SignIn extends Component {
     render() {
+        const { navigate } = this.props.navigation;
         return (
             <View style={styles.container}>
                 <Text style={styles.title}>
                     Sign In Component
                 </Text>
-                <TouchableOpacity style={styles.buttonContainer}>
+                <TouchableOpacity
+                    style={styles.buttonContainer}
+                    onPress={() => navigate('Profile')}
+                >
                     <Text style={styles.buttonText}>Log In</Text>
                 </TouchableOpacity>
             </View>

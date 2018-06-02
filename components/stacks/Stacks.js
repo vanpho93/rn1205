@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import Profile from './Profile';
 import SignIn from './SignIn';
+import { StackNavigator } from 'react-navigation';
 
-export default class Stacks extends Component {
-    render() {
-        return <Profile />;
-    }
-}
+const Stack = StackNavigator({
+    SignIn: { screen: SignIn },
+    Profile: { screen: Profile },
+});
+
+export default Stack;
