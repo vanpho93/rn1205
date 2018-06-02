@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 
 class Home extends Component {
+    static navigationOptions = {
+        tabBarIcon: param => {
+            if (param.focused) return <Image source={require('../images/active-home.png')} />;
+            return <Image source={require('../images/inactive-home.png')} />
+        }
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -15,6 +22,12 @@ class Home extends Component {
 }
 
 class About extends Component {
+    static navigationOptions = {
+        tabBarIcon: param => {
+            if (param.focused) return <Image source={require('../images/active-about.png')} />;
+            return <Image source={require('../images/inactive-about.png')} />
+        }
+    }
     render() {
         return (
             <View style={[styles.container, { backgroundColor: '#2185FD' }]}>
