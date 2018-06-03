@@ -10,7 +10,8 @@
     "axios": "^0.18.0",
     "react": "16.2.0",
     "react-native": "0.53.3",
-    "react-navigation": "^2.0.4"
+    "react-navigation": "^2.0.4",
+    "uuid": "^3.2.1"
   },
   "devDependencies": {
     "babel-jest": "23.0.0",

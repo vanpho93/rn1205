@@ -1,6 +1,9 @@
 const express = require('express');
 const { json } = require('body-parser');
 const { hash, compare } = require('bcrypt');
+const faker = require('faker');
+const uuid = require('uuid');
+
 const { signPromise, verifyPromise } = require('./jwt');
 const { User } = require('./user');
 const app = express();
@@ -10,7 +13,7 @@ app.get('/user', (req, res) => {
     User.find({})
     .then(users => res.send(users));
 });
-// https://user1205.herokuapp.com/user
+
 app.post('/user/signup', async (req, res) => {
     try {
         const { name, email, password } = req.body;
@@ -56,6 +59,21 @@ app.post('/user/check', async (req, res) => {
     } catch (error) {
         return res.status(400).send({ success: false, message: 'INVALID_USER_INFO' });
     }
+});
+
+app.get('/singer', (req, res) => {
+    const singers = [];
+    for (let index = 0; index < 4; index++) {
+        const name = faker.name.firstName();
+        const singer = {
+            _id: uuid(7),
+            name,
+            avatar: faker.internet.avatar(),
+            email: faker.internet.email(name)
+        };        
+        singers.push(singer);
+    }
+    res.send({ singers });
 });
 
 app.listen(process.env.PORT || 3000, () => console.log('Server started!'));
