@@ -24,20 +24,20 @@ app.post('/user/signup', async (req, res) => {
 });
 
 app.post('/user/signin', async (req, res) => {
-    const { email, password } = req.body;
-    const user = await User.findOne({ email });
-    if (!user) {
-        return res.status(400).send({ success: false, message: 'INVALID_USER_INFO' });
-    };
-    const same = await compare(password, user.password);
-    if (!same) {
-        return res.status(400).send({ success: false, message: 'INVALID_USER_INFO' });
+    try {
+        const { email, password } = req.body;
+        const user = await User.findOne({ email });
+        if (!user) throw new Error('INVALID_USER_INFO');
+        const same = await compare(password, user.password);
+        if (!same) throw new Error('INVALID_USER_INFO');
+        const token = await signPromise({ _id: user._id });
+        const userInfo = user.toObject();
+        userInfo.token = token;
+        userInfo.password = undefined;
+        res.send({ success: true, user: userInfo }); 
+    } catch (error) {
+        res.status(400).send({ success: false, message: 'INVALID_USER_INFO' });
     }
-    const token = await signPromise({ _id: user._id });
-    const userInfo = user.toObject();
-    userInfo.token = token;
-    userInfo.password = undefined;
-    res.send({ success: true, user: userInfo }); 
 });
 
 app.post('/user/check', async (req, res) => {
