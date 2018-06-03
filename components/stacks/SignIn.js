@@ -9,9 +9,7 @@ export default class SignIn extends Component {
         try {
             const { txtEmail, txtPassword } = this.state;
             const data = await UserService.signIn(txtEmail, txtPassword);
-            // alert(JSON.stringify(data));
-            const { name, email, avatar } = data.user;
-            this.props.navigation.navigate('Profile', { name, email, avatar });  
+            this.props.navigation.navigate('Profile', { user: data.user });  
         } catch (error) {
             alert('CANNOT SIGN IN.');
         }

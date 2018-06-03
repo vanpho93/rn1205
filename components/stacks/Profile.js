@@ -5,17 +5,15 @@ export default class Profile extends Component {
     render() {
         const { navigation } = this.props;
         const { goBack } = navigation;
-        const name = navigation.getParam('name');
-        const email = navigation.getParam('email');
-        const avatar = navigation.getParam('avatar');
+        const user = navigation.getParam('user');
         return (
             <View style={styles.container}>
                 <Text style={styles.title}>
                     Profile Component
                 </Text>
-                <Text>Name: {name}</Text>
-                <Text>Email: {email}</Text>
-                <Image style={styles.image} source={{ uri: avatar }} />
+                <Text>Name: {user.name}</Text>
+                <Text>Email: {user.email}</Text>
+                <Image style={styles.image} source={{ uri: user.avatar }} />
                 <TouchableOpacity
                     style={styles.buttonContainer}
                     onPress={() => goBack()}
