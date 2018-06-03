@@ -11,9 +11,18 @@ export default class UserService {
         return response.data;
     }
 
+    static wait() {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => resolve(), 1000);
+        });
+    }
+
     static async check() {
         const token = await AsyncStorage.getItem('token');
-        if (!token) throw new Error('No token');
+        if (!token) {
+            await UserService.wait();
+            throw new Error('No token');
+        }
         const URL = 'https://user1205.herokuapp.com/user/check';
         const response = await axios.post(URL, { token });
         if (!response.data.success) throw new Error('Invalid token');
