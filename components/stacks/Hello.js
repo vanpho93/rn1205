@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import { View, Text, ActivityIndicator } from 'react-native';
+import UserService from '../services/user.service';
 
 export default class Hello extends Component {
     componentDidMount() {
         const { navigate } = this.props.navigation;
-        setTimeout(() => navigate('SignIn'), 1000);
+        // setTimeout(() => navigate('SignIn'), 1000);
+        UserService.check()
+        .then(user => navigate('Profile', { user }))
+        .catch(error => {
+            alert(error.message);
+            navigate('SignIn');
+        });
     }
 
     render() {
