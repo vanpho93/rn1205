@@ -3,15 +3,19 @@ import { View, Text, TouchableOpacity, Image } from 'react-native';
 
 export default class Profile extends Component {
     render() {
-        const { goBack } = this.props.navigation;
+        const { navigation } = this.props;
+        const { goBack } = navigation;
+        const name = navigation.getParam('name');
+        const email = navigation.getParam('email');
+        const avatar = navigation.getParam('avatar');
         return (
             <View style={styles.container}>
                 <Text style={styles.title}>
                     Profile Component
                 </Text>
-                <Text>Name: Teo Nguyen</Text>
-                <Text>Email: teo@gmail.com</Text>
-                <Image style={styles.image} source={{ uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/kijanmaharjan/128.jpg' }} />
+                <Text>Name: {name}</Text>
+                <Text>Email: {email}</Text>
+                <Image style={styles.image} source={{ uri: avatar }} />
                 <TouchableOpacity
                     style={styles.buttonContainer}
                     onPress={() => goBack()}
