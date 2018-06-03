@@ -44,7 +44,6 @@ export default class SignIn extends Component {
                 >
                     <Text style={styles.buttonText}>Log In</Text>
                 </TouchableOpacity>
-                <TokenDebugger />
             </View>
         );
     }

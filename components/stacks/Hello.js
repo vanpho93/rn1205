@@ -9,7 +9,7 @@ export default class Hello extends Component {
         UserService.check()
         .then(user => navigate('Profile', { user }))
         .catch(error => {
-            alert(error.message);
+            // alert(error.message);
             navigate('SignIn');
         });
     }

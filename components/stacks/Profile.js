@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
+import UserService from '../services/user.service';
 
 export default class Profile extends Component {
+    logOut = async () => {
+        await UserService.logOut();
+        this.props.navigation.navigate('SignIn');
+    }
+
     render() {
         const { navigation } = this.props;
-        const { goBack } = navigation;
         const user = navigation.getParam('user');
         return (
             <View style={styles.container}>
@@ -16,7 +21,7 @@ export default class Profile extends Component {
                 <Image style={styles.image} source={{ uri: user.avatar }} />
                 <TouchableOpacity
                     style={styles.buttonContainer}
-                    onPress={() => goBack()}
+                    onPress={this.logOut}
                 >
                     <Text style={styles.buttonText}>Log out</Text>
                 </TouchableOpacity>
