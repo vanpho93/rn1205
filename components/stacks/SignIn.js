@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, TextInput } from 'react-native';
+import UserService from '../services/user.service';
 
 export default class SignIn extends Component {
     state = { txtEmail: 'teo@gmail.com', txtPassword: '123' };
+
+    signIn = async () => {
+        try {
+            const { txtEmail, txtPassword } = this.state;
+            const data = await UserService.signIn(txtEmail, txtPassword);
+            alert(JSON.stringify(data));  
+        } catch (error) {
+            alert('CANNOT SIGN IN.');
+        }
+    }
+
     render() {
         const { navigate } = this.props.navigation;
         const { txtEmail, txtPassword } = this.state;
@@ -28,7 +40,7 @@ export default class SignIn extends Component {
                 />
                 <TouchableOpacity
                     style={styles.buttonContainer}
-                    onPress={() => navigate('Profile')}
+                    onPress={this.signIn}
                 >
                     <Text style={styles.buttonText}>Log In</Text>
                 </TouchableOpacity>
