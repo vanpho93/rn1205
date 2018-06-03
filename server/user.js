@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const faker = require('faker');
 
-mongoose.connect('mongodb://localhost/user1205')
+mongoose.connect('mongodb://admin:khoapham123@ds147030.mlab.com:47030/user1205')
 .then(() => console.log('Database connected'))
 .catch(error => console.log('Cannot connect database', error));
 
