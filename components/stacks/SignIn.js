@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, TextInput } from 'react-native';
 import UserService from '../services/user.service';
-
+import TokenDebugger from './TokenDebugger';
 export default class SignIn extends Component {
     state = { txtEmail: 'teo@gmail.com', txtPassword: '123' };
 
@@ -44,6 +44,7 @@ export default class SignIn extends Component {
                 >
                     <Text style={styles.buttonText}>Log In</Text>
                 </TouchableOpacity>
+                <TokenDebugger />
             </View>
         );
     }
