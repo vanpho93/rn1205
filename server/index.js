@@ -10,7 +10,7 @@ app.get('/user', (req, res) => {
     User.find({})
     .then(users => res.send(users));
 });
-
+// https://user1205.herokuapp.com/user
 app.post('/user/signup', async (req, res) => {
     try {
         const { name, email, password } = req.body;

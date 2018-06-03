@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 
 export default class Profile extends Component {
     render() {
@@ -9,6 +9,9 @@ export default class Profile extends Component {
                 <Text style={styles.title}>
                     Profile Component
                 </Text>
+                <Text>Name: Teo Nguyen</Text>
+                <Text>Email: teo@gmail.com</Text>
+                <Image style={styles.image} source={{ uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/kijanmaharjan/128.jpg' }} />
                 <TouchableOpacity
                     style={styles.buttonContainer}
                     onPress={() => goBack()}
@@ -46,5 +49,6 @@ const styles = {
     buttonText: {
         color: 'white',
         fontWeight: 'bold'
-    }
+    },
+    image: { width: 100, height: 100 }
 }

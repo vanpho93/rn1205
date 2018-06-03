@@ -8,6 +8,6 @@ StatusBar.setHidden(true);
 
 export default class App extends Component {
   render() {
-    return <MyTabbar />;
+    return <Stacks />;
   }
 }
