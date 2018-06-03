@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, FlatList, Image } from 'react-native';
+import { View, Text, TouchableOpacity, FlatList, Image, RefreshControl } from 'react-native';
 
 export default class Singers extends Component {
     state = {
@@ -28,7 +28,8 @@ export default class Singers extends Component {
                 "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/artvavs/128.jpg",
                 "email": "Jesus24@yahoo.com"
             }
-        ]
+        ],
+        loading: false
     }
 
     render() {
@@ -39,6 +40,17 @@ export default class Singers extends Component {
                     style={{ width: 400 }}
                     data={this.state.singers}
                     keyExtractor={item => item._id}
+                    refreshControl={
+                        <RefreshControl
+                            refreshing={this.state.loading}
+                            onRefresh={() => {
+                                this.setState({ loading: true });
+                                setTimeout(() => {
+                                    this.setState({ loading: false });
+                                }, 3000);
+                            }}
+                        />
+                    }
                     renderItem={param => (
                         <View style={styles.singer}>
                             <View style={styles.singerLeft}>
