@@ -4,10 +4,17 @@ import Button from './shared/Button';
 import Input from './shared/Input';
 
 export default class Chat extends Component {
+    state = { txtMessage: '', lastMessage: '' }
     render() {
+        const { txtMessage, lastMessage } = this.state;
         return (
             <View style={styles.container}>
-                <Input placeholder="Enter your message here" />
+                <Text>{ lastMessage? lastMessage : 'Waiting for messages' }</Text>
+                <Input
+                    placeholder="Enter your message here"
+                    value={txtMessage}
+                    onChangeText={text => this.setState({ txtMessage: text })}
+                />
                 <Button
                     title="Send Message"
                     type="success"
