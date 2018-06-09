@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
 import Button from './shared/Button';
+import Input from './shared/Input';
 
 export default class Buoi3 extends Component {
     render() {
@@ -16,11 +17,7 @@ export default class Buoi3 extends Component {
                 <Button title="Update" onPress={() => alert('efgh')} type="warning" />
                 <Button title="Add" onPress={() => alert('efgh')} type="success" loading />
                 <Button title="Show" onPress={() => alert('efgh')} />
-                <TextInput
-                    style={styles.textInput}
-                    underlineColorAndroid="transparent"
-                    placeholder="Enter your email"
-                />
+                <Input />
             </View>        
         );
     }
@@ -32,14 +29,5 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#BFB6D3'
-    },
-    textInput: {
-        width: 300,
-        height: 40,
-        backgroundColor: 'white',
-        paddingHorizontal: 10,
-        borderRadius: 5,
-        borderColor: '#CFCFCF',
-        borderWidth: 1
     }
 });
