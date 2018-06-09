@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
+import Button from './shared/Button';
 
 export default class Buoi3 extends Component {
     render() {
         return (
             <View style={styles.container}>
                 <Text>Buoi3</Text>
-                <TouchableOpacity style={styles.buttonContainer}>
-                    <Text style={styles.buttonText}>Click here</Text>
-                </TouchableOpacity>
+                <Button />
                 <TextInput
                     style={styles.textInput}
                     underlineColorAndroid="transparent"
@@ -25,18 +24,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#BFB6D3'
-    },
-    buttonContainer: {
-        padding: 10,
-        margin: 10,
-        backgroundColor: '#3AB902',
-        borderRadius: 5,
-        borderColor: '#339136',
-        borderWidth: 1
-    },
-    buttonText: {
-        color: 'white',
-        fontWeight: 'bold'
     },
     textInput: {
         width: 300,
