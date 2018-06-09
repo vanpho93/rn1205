@@ -44,5 +44,6 @@ export default class App extends Component {
   Giao dien dep
   https://github.com/vanpho93/LiveCodeReactNative/blob/master/screens.pdf
   dung redux
-  vanpho01@gmail.com
+  khoaphamtraining@gmail.com
+  CHU DE: DO AN CUOI KHOA REACT NATIVE 1205
 */
