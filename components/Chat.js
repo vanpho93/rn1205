@@ -7,10 +7,12 @@ import Input from './shared/Input';
 const socket = io('https://realtime1205.herokuapp.com/');
 
 export default class Chat extends Component {
-    state = { txtMessage: '', lastMessage: '' }
+    state = { txtMessage: '', messages: [] }
 
     componentDidMount() {
-        socket.on('SERVER_SEND_MESSAGE', data => this.setState({ lastMessage: data }));
+        socket.on('SERVER_SEND_MESSAGE', data => {
+            this.setState({ messages: [data, ...this.state.messages] });
+        });
     }
 
     sendMessage = () => {
@@ -19,10 +21,10 @@ export default class Chat extends Component {
     }
 
     render() {
-        const { txtMessage, lastMessage } = this.state;
+        const { txtMessage, messages } = this.state;
         return (
             <View style={styles.container}>
-                <Text style={{ color: '#565D61' }}>{ lastMessage? lastMessage : 'Waiting for messages' }</Text>
+                {messages.map((message, index) => <Text key={index}>{message}</Text>)}
                 <Input
                     placeholder="Enter your message here"
                     value={txtMessage}
