@@ -17,7 +17,11 @@ export default class Buoi3 extends Component {
                 <Button title="Update" onPress={() => alert('efgh')} type="warning" />
                 <Button title="Add" onPress={() => alert('efgh')} type="success" loading />
                 <Button title="Show" onPress={() => alert('efgh')} />
-                <Input />
+                <Input placeholder="Enter your email here." />
+                <Input
+                    placeholder="Enter your password here."
+                    secureTextEntry
+                />
             </View>        
         );
     }

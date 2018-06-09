@@ -5,9 +5,10 @@ export default class Input extends Component {
     render() {
         return (
             <TextInput
-                style={styles.textInput}
+                {...this.props}
+                style={[styles.textInput, this.props.style]}
                 underlineColorAndroid="transparent"
-                placeholder="Enter your email"
+                autoCapitalize="none"
             />
         );
     }
@@ -21,7 +22,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         borderRadius: 5,
         borderColor: '#CFCFCF',
-        borderWidth: 1
+        borderWidth: 1,
+        margin: 10
     }
 });
 
