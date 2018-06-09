@@ -2,10 +2,20 @@ import React, { Component } from 'react';
 import { StyleSheet, TouchableOpacity, Text } from 'react-native';
 
 export default class Button extends Component {
+    getStyleByType() {
+        const { type } = this.props;
+        if (type === 'success') return { backgroundColor: '#3AB902', borderColor: '#339136' };
+        if (type === 'danger') return { backgroundColor: '#F82D2F', borderColor: '#BC0001' };
+        if (type === 'warning') return { backgroundColor: '#FFBF37', borderColor: '#FD4824' };
+        return { backgroundColor: '#229CFF', borderColor: '#174FE9' };
+    }
+
     render() {
+        const { title, style } = this.props;
+        const styleByType = this.getStyleByType();
         return (
-            <TouchableOpacity style={styles.buttonContainer}>
-                <Text style={styles.buttonText}>Click here</Text>
+            <TouchableOpacity {...this.props} style={[styles.buttonContainer, styleByType, style]}>
+                <Text style={styles.buttonText}>{title}</Text>
             </TouchableOpacity>
         );
     }
