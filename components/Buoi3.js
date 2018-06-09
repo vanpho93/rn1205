@@ -12,9 +12,9 @@ export default class Buoi3 extends Component {
                     onPress={() => alert(123)}
                     type="success"
                 />
-                <Button title="Remove" onPress={() => alert('abcd')} type="danger" />
+                <Button title="Remove" onPress={() => alert('abcd')} type="danger" loading={true} />
                 <Button title="Update" onPress={() => alert('efgh')} type="warning" />
-                <Button title="Add" onPress={() => alert('efgh')} type="success" />
+                <Button title="Add" onPress={() => alert('efgh')} type="success" loading />
                 <Button title="Show" onPress={() => alert('efgh')} />
                 <TextInput
                     style={styles.textInput}

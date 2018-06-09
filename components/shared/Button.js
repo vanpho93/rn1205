@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, ActivityIndicator } from 'react-native';
 
 export default class Button extends Component {
     getStyleByType() {
@@ -11,11 +11,11 @@ export default class Button extends Component {
     }
 
     render() {
-        const { title, style } = this.props;
+        const { title, style, loading } = this.props;
         const styleByType = this.getStyleByType();
         return (
             <TouchableOpacity {...this.props} style={[styles.buttonContainer, styleByType, style]}>
-                <Text style={styles.buttonText}>{title}</Text>
+                {loading ? <ActivityIndicator /> : <Text style={styles.buttonText}>{title}</Text> }
             </TouchableOpacity>
         );
     }
